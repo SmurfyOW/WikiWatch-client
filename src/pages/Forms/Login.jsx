@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const defaultValues = {
     data: "",
     password: "",
@@ -36,8 +39,10 @@ export default function Login() {
         },
       });
       const responseFromBackend = await response.json();
+      console.log(responseFromBackend);
+
       if (response.ok) {
-        toast.success(responseFromBackend.message);
+        toast.success("Bien connecté");
         navigate("/");
         reset(defaultValues);
       } else {
