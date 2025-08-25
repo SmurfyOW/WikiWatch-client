@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Register() {
+  const navigate = useNavigate();
+
   const defaultValues = {
     username: "",
     email: "",
@@ -47,9 +50,30 @@ export default function Register() {
     mode: "onChange",
   });
 
-  function submit(values) {
-    console.log(values);
-    reset(defaultValues);
+  const test = async () => {};
+
+  async function submit(values) {
+    // console.log(values);
+    try {
+      const response = await fetch("http://localhost:5000/user", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      const responseFromBackend = await response.json();
+      if (response.ok) {
+        toast.success(responseFromBackend.message);
+        navigate("/login");
+        reset(defaultValues);
+      } else {
+        toast.error(responseFromBackend.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    // reset(defaultValues);
     // requete HTTP
   }
   return (
