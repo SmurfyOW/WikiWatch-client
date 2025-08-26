@@ -3,9 +3,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { NavLink, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
+
+  const { login } = useAuth();
 
   const defaultValues = {
     data: "",
@@ -43,6 +46,8 @@ export default function Login() {
 
       if (response.ok) {
         toast.success("Bien connecté");
+        login(responseFromBackend.user);
+
         navigate("/");
         reset(defaultValues);
       } else {
