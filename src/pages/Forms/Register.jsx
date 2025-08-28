@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { NavLink, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { signUp } from "../../api/auth.api";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -50,20 +51,10 @@ export default function Register() {
     mode: "onChange",
   });
 
-  const test = async () => {};
-
   async function submit(values) {
-    // console.log(values);
     try {
-      const response = await fetch("http://localhost:5000/user", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-      const responseFromBackend = await response.json();
-      if (response.ok) {
+      const responseFromBackend = await signUp(values);
+      if (responseFromBackend.message !== "Déjà inscrit") {
         toast.success(responseFromBackend.message);
         navigate("/login");
         reset(defaultValues);
@@ -73,8 +64,6 @@ export default function Register() {
     } catch (error) {
       console.log(error);
     }
-    // reset(defaultValues);
-    // requete HTTP
   }
   return (
     <div className="w-full max-w-md p-6 bg-white shadow-xl rounded">

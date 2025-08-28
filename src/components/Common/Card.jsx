@@ -11,6 +11,9 @@ export default function Card({ blog }) {
       <div className="p-6">
         <p className="text-lg text-blue-500">{blog.titre}</p>
         <p className="text-base">{blog.texte}</p>
+        <p className="text-[14px] text-red-400 text-left">
+          Créé le {blog.date}
+        </p>
       </div>
     </div>
   );
