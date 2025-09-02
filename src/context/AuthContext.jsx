@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    setUserConnected(nul);
+    setUserConnected(null);
   };
 
   return (

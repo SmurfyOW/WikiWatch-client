@@ -60,43 +60,48 @@ export default function Login() {
     // requete HTTP
   }
   return (
-    <div className="w-full max-w-md p-6 bg-white shadow-xl rounded">
+    <div className="w-full max-w-md p-7 align-center shadow-x1 shadow-[0_10px_20px_rgba(0,_0,_0,_0.06)] rounded-b-2xl">
       <form
         className="flex flex-col gap-4 mb-6 mx-auto max-w-[400px]"
         onSubmit={handleSubmit(submit)}
       >
         <div className="flex flex-col mb-2">
-          <label htmlFor="data" className="mb-2">
+          <label htmlFor="data" className="mb-2 text-left font-semibold">
             Pseudo ou Email
           </label>
           <input
             {...register("data")}
             type="text"
             id="data"
-            className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Saisissez votre Pseudo ou Email"
+            className="bg-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.data && <p className="text-red-500">{errors.data.message}</p>}
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="password" className="mb-2">
+          <label htmlFor="password" className="mb-2 text-left font-semibold">
             Mot de passe
           </label>
           <input
             {...register("password")}
             type="password"
             id="password"
-            className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Saisissez votre mot de passe"
+            className="bg-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.password && (
             <p className="text-red-500">{errors.password.message}</p>
           )}
         </div>
-        <NavLink to="/register" className="text-blue-500">
-          Pas encore inscrit ?
-        </NavLink>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          Submit
+        <button className="bg-[#F58220] text-[#ffffff] font-semibold px-4 py-2 rounded hover:bg-amber-500 transition-colors duration-200">
+          Se connecter
         </button>
+        <div className="flex justify-center text-center gap-1">
+          <p>Vous n'avez pas de compte ?</p>
+          <NavLink to="/register" className="text-blue-500 font-semibold">
+            Créer un compte
+          </NavLink>
+        </div>
       </form>
     </div>
   );

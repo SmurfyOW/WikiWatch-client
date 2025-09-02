@@ -66,62 +66,69 @@ export default function Register() {
     }
   }
   return (
-    <div className="w-full max-w-md p-6 bg-white shadow-xl rounded">
+    <div className="w-full max-w-md p-6 bg-white shadow-x1 shadow-[0_10px_20px_rgba(0,_0,_0,_0.06)] rounded-b-2xl">
       <form
         className="flex flex-col gap-4 mb-6 mx-auto max-w-[400px]"
         onSubmit={handleSubmit(submit)}
       >
         <div className="flex flex-col mb-2">
-          <label htmlFor="username" className="mb-2">
+          <label htmlFor="username" className="mb-2 text-left font-semibold">
             Pseudo
           </label>
           <input
             {...register("username")}
             type="text"
             id="username"
-            className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Saisissez votre pseudo.."
+            className="bg-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.username && (
             <p className="text-red-500">{errors.username.message}</p>
           )}
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="email" className="mb-2">
+          <label htmlFor="email" className="mb-2 text-left font-semibold">
             Email
           </label>
           <input
             {...register("email")}
             type="email"
             id="email"
-            className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Saisissez votre email.."
+            className="bg-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.email && (
             <p className="text-red-500">{errors.email.message}</p>
           )}
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="password" className="mb-2">
+          <label htmlFor="password" className="mb-2 text-left font-semibold">
             Mot de passe
           </label>
           <input
             {...register("password")}
             type="password"
             id="password"
-            className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Saisissez votre mot de passe.."
+            className="bg-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.password && (
             <p className="text-red-500">{errors.password.message}</p>
           )}
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="confirmPassword" className="mb-2">
+          <label
+            htmlFor="confirmPassword"
+            className="mb-2 text-left font-semibold"
+          >
             Confirmation du mot de passe
           </label>
           <input
             {...register("confirmPassword")}
             type="password"
             id="confirmPassword"
-            className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Confirmez votre mot de passe .."
+            className="bg-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.confirmPassword && (
             <p className="text-red-500">{errors.confirmPassword.message}</p>
@@ -139,10 +146,13 @@ export default function Register() {
           </label>
           {errors.rgpd && <p className="text-red-500">{errors.rgpd.message}</p>}
         </div>
-        <NavLink to="/login" className="text-blue-500">
-          Déjà inscrit ?
-        </NavLink>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        <div className="flex justify-center text-center gap-1">
+          <p>Déjà inscrit ?</p>
+          <NavLink to="/login" className="text-blue-500">
+            Se connecter
+          </NavLink>
+        </div>
+        <button className="bg-[#F58220] text-[#ffffff] font-semibold px-4 py-2 rounded hover:bg-amber-500 transition-colors duration-200">
           Submit
         </button>
       </form>
