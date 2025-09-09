@@ -21,10 +21,9 @@ export default function BlogDetails() {
 
   return (
     <div>
-      <h3>{details.titre}</h3>
-      <p>{details.texte}</p>
+      <h3>{details.name}</h3>
       <div className="w-[300px] h-[300px]">
-        <img src={details.image} alt="" />
+        <img src={details.portrait} alt="" />
       </div>
     </div>
   );

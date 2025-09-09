@@ -6,7 +6,7 @@ export default function Card({ blog }) {
       <div className="border border-gray-400 rounded-lg m-4">
         <div className="aspect-[3/2]">
           <img
-            src={blog.image}
+            src={blog.portrait}
             alt={blog.titre}
             className="w-full h-full object-cover"
           />

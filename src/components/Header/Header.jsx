@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
-export default function Header() {
+export default function Header({ search, setSearch }) {
   const { userConnected, logout } = useAuth();
 
   return (
     <header className="bg-white px-6 shadow-md flex flex-row justify-between items-center mb-10">
       <NavLink to="/">
-        {/* Logo */}
         <img src="logo.webp" alt="logo WikiWatch" className="w-50" />
       </NavLink>
 
@@ -17,6 +16,8 @@ export default function Header() {
         <input
           type="text"
           placeholder="Rechercher un héros"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           className="flex-1 text-left bg-transparent outline-none placeholder-gray-500 w-full"
         />
       </div>

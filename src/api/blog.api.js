@@ -1,4 +1,6 @@
-import { BASE_URL } from "../utils/url";
+// import { BASE_URL } from "../utils/url";
+
+const BASE_URL = import.meta.env.VITE_SERVER_URL;
 
 export async function getBlogsFromApi() {
   try {

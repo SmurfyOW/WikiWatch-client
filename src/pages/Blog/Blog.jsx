@@ -1,4 +1,4 @@
-import Card from "../../components/Common/Card";
+import Carte from "../../components/Common/Carte";
 import { useBlog } from "../../context/BlogContext";
 
 export default function Blog() {
@@ -7,7 +7,7 @@ export default function Blog() {
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {blogs.map((blog) => (
-          <Card key={blog._id} blog={blog} />
+          <Carte key={blog._id} blog={blog} />
         ))}
       </div>
     </div>
